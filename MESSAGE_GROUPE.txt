@@ -1,0 +1,6 @@
+Salut, j’ai terminé l’installation du labo et les manipulations de la phase 1. Le PDF répond à Q1–Q6 et il y a un Word modifiable, les sorties des scans et les captures.
+Les trois VM sont Kali, srv-web (Debian + DVWA) et srv-legacy (Metasploitable 2). Je vous transmettrai leurs exports séparément du Git, avec les accès en privé.
+À reprendre : Qualys (compte créé mais connexion qui revient au login, agent pas installé), puis phases 2 à 5. Greenbone est installé et Nessus activé, mais leurs scans ne sont pas encore faits.
+Petit point à garder dans le rapport : Masscan legacy a trouvé 30 ports mais a bloqué en fin de scan, donc sa durée finale n’a pas été conservée. Les autres résultats sont présents.
+Lisez README.txt pour l’état précis et GUIDE_GIT_VM.txt pour importer les VM. Ne restaurez pas installation-base, ça ferait perdre la préparation faite après. Vérifiez les réseaux avant de lancer les VM, puis faites les instantanés de phase 2.
+Le rendu final est limité à 15 pages et doit partir le 23 novembre à 16 h. Il faut condenser notre version de phase 1 au moment d’intégrer vos parties.

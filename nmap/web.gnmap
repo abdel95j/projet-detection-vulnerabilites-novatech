@@ -1,0 +1,4 @@
+# Nmap 7.991 scan initiated Fri Nov 20 19:45:00 2026 as: /usr/lib/nmap/nmap -sS -sV -sC -O -p- -T4 --reason --stats-every 30s -oA nmap/web srv-web
+Host: 192.168.56.20 (srv-web)	Status: Up
+Host: 192.168.56.20 (srv-web)	Ports: 22/open/tcp//ssh//OpenSSH 10.0p2 Debian 7+deb13u4 (protocol 2.0)/, 80/open/tcp//http//Apache httpd 2.4.71 ((Debian))/	Ignored State: closed (65533)	Seq Index: 262	IP ID Seq: All zeros
+# Nmap done at Fri Nov 20 19:45:15 2026 -- 1 IP address (1 host up) scanned in 15.86 seconds

@@ -1,0 +1,62 @@
+GIT ET TRANSFERT DES VM
+
+1. Créer le dépôt sur github.com/new
+Nom suggéré : projet-detection-vulnerabilites-novatech
+Visibilité : PRIVATE. Ne pas ajouter de README, licence ou .gitignore sur le site (ils sont déjà préparés).
+Settings > Collaborators : inviter les comptes GitHub d’Ostrean et Firas.
+
+Dans un terminal UBUNTU (cytech@student-laptop) :
+cd "/home/cytech/CYTECH - INFO/info_ing3_cyber/Detection_vulnerabilites/Projet_NovaTech/partage_groupe"
+git init -b main
+git add .
+git status --short
+git diff --cached --stat
+git commit -m "Installation du labo et phase 1"
+git remote add origin https://github.com/TON_COMPTE/projet-detection-vulnerabilites-novatech.git
+git push -u origin main
+
+Remplacer TON_COMPTE. Si Git demande l’identité, configurer user.name et user.email dans CE dépôt. Pour HTTPS, utiliser l’authentification GitHub/token ou GitHub CLI ; ne pas mettre de token dans l’URL ou un fichier du projet.
+Les autres : git clone URL_DU_DEPOT puis git pull avant de reprendre. Se répartir les phases pour éviter de modifier le même rapport en parallèle.
+Ne pas ajouter le dossier parent : ACCES_PRIVES.txt doit rester hors Git.
+
+2. Les trois VM à transmettre
+- Kali (kali-linux-2026.3-virtualbox-amd64) : outils, Greenbone, Nessus, fichiers de travail.
+- srv-web : Debian, DVWA, configuration et compte audit.
+- srv-legacy : disque Metasploitable 2 et réseau isolé.
+Le plus simple : exporter l’ÉTAT ACTUEL de chacune vers un fichier OVA. Ne pas restaurer installation-base : Nessus a été installé après cet instantané.
+Ne pas copier uniquement les VDI : les VM utilisent des instantanés et donc une chaîne de disques.
+L’export OVA ne transporte pas l’arbre des instantanés : il faut en recréer après import.
+
+3. Avant export
+Fermer le journal avec exit dans Kali. Y exécuter outils/nettoyer_journal.py avec python3 (transférer le script depuis Ubuntu si nécessaire).
+Les VM restent privées : elles contiennent des comptes de labo, sessions de navigateur et activations. Se déconnecter de Shodan, Qualys et autres comptes personnels et retirer les mots de passe enregistrés du navigateur. Ne pas promettre qu’une VM est dépourvue de secrets.
+Depuis Ubuntu, dans le dossier partage_groupe, pour nettoyer le journal de Kali :
+scp outils/nettoyer_journal.py kali@192.168.56.101:/tmp/nettoyer_journal.py
+ssh kali@192.168.56.101 'python3 /tmp/nettoyer_journal.py'
+
+Puis dans CHAQUE VM : sudo poweroff. Attendre l’état Éteinte.
+
+Dans Ubuntu, depuis le dossier partage_groupe :
+bash outils/exporter_vm.sh
+
+Le script refuse de démarrer si une des trois VM n’est pas éteinte. Il écrit les trois OVA et SHA256SUMS dans /data/LaboVulnerabilites/exports. Il n’efface aucun export existant.
+Alternative interface : Fichier > Exporter un appareil virtuel, une VM à la fois, format OVA, sans exporter les ISO.
+Contrôle : vérifier les messages de succès, puis les tailles réelles des trois fichiers avant l’envoi. L’import sur le poste du collègue reste le test final.
+
+4. Partage privé
+Mettre les trois OVA + SHA256SUMS sur Drive ou OneDrive de l’école, dossier accessible seulement au groupe. Vérifier le quota : les trois VM peuvent dépasser largement 15 Go. Si nécessaire, disque USB/externe avec assez de place, format acceptant les fichiers de plus de 4 Go. Pas de VM dans Git.
+Transmettre ACCES_PRIVES.txt séparément en message privé ou gestionnaire de mots de passe partagé ; pas de lien public.
+
+5. Chez Ostrean/Firas
+Poste Intel/AMD x86-64, VirtualBox 7.2, 16 Go de RAM conseillés, place suffisante pour les disques et instantanés. Le sujet ne prend pas en charge le Mac ; Firas doit utiliser un poste x86-64 adapté ou contribuer depuis le poste de labo d’un membre.
+Vérifier : sha256sum -c SHA256SUMS
+Importer les trois OVA (Fichier > Importer un appareil virtuel), dans un dossier avec assez de place.
+Créer/vérifier réseau hôte seul 192.168.56.1/24, DHCP .100, plage .101 à .254.
+Avant démarrage : Kali et srv-web carte 1 NAT, carte 2 hôte seul ; legacy carte 1 hôte seul seulement. Aucun pont. Réassocier vboxnet0 localement, les noms peuvent différer après import.
+Ne pas démarrer deux copies d’un même serveur sur le même réseau : web utilise .20 fixe. Après changement de MAC, les profils NetworkManager peuvent devoir être réassociés ; vérifier les interfaces, ne pas supposer la connectivité.
+Contrôler IP, noms dans /etc/hosts, DVWA, Greenbone et Nessus ; une activation/service peut demander une reprise sur le nouveau poste.
+Créer trois instantanés installation-transferee, puis avant-phase2 avant de poursuivre.
+
+6. Rendu prof (à préparer seulement après les phases restantes)
+projet_DV_EL_HARSAL_BONNET_BENMANSOUR.zip : PDF final <=15 pages et pièces de la page 1 du sujet.
+Pas de VM, fichier d’accès, .git, documentation de coordination ou scripts d’export dans ce rendu.

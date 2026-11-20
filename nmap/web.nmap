@@ -1,0 +1,17 @@
+# Nmap 7.991 scan initiated Fri Nov 20 19:45:00 2026 as: /usr/lib/nmap/nmap -sS -sV -sC -O -p- -T4 --reason --stats-every 30s -oA nmap/web srv-web
+Nmap scan report for srv-web (192.168.56.20)
+Host is up, received arp-response (0.0012s latency).
+Not shown: 65533 closed tcp ports (reset)
+PORT   STATE SERVICE REASON         VERSION
+22/tcp open  ssh     syn-ack ttl 64 OpenSSH 10.0p2 Debian 7+deb13u4 (protocol 2.0)
+80/tcp open  http    syn-ack ttl 64 Apache httpd 2.4.71 ((Debian))
+|_http-server-header: Apache/2.4.71 (Debian)
+|_http-title: Apache2 Debian Default Page: It works
+MAC Address: 08:00:27:EE:83:F2 (Oracle VirtualBox virtual NIC)
+Aggressive OS guesses: Linux 4.15 - 5.19 (94%), Linux 5.4 - 5.10 (93%), OpenWrt 21.02 (Linux 5.4) (93%), MikroTik RouterOS 7.2 - 7.5 (Linux 5.6.3) (93%), Linux 6.0 (93%), Linux 4.10 (93%), Linux 5.0 - 5.14 (92%), Linux 4.19 (92%), Linux 2.6.32 (91%), Linux 5.14 - 6.8 (91%)
+No exact OS matches for host (test conditions non-ideal).
+Network Distance: 1 hop
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Fri Nov 20 19:45:15 2026 -- 1 IP address (1 host up) scanned in 15.86 seconds

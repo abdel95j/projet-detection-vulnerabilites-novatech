@@ -1,0 +1,45 @@
+# Plan ZAP (Automation Framework) - Projet Détection de vulnérabilités
+# Ne pas lancer tel quel : générer plan_zap_session.yaml (voir le sujet, phase 3).
+env:
+  contexts:
+    - name: dvwa
+      urls:
+        - 'http://srv-web/DVWA/'
+      includePaths:
+        - 'http://srv-web/DVWA/.*'
+      excludePaths:
+        - '.*logout\.php.*'
+        - '.*setup\.php.*'
+        - '.*security\.php.*'
+        - '.*/csrf/.*'
+        - '.*/captcha/.*'
+  parameters:
+    failOnError: true
+    progressToStdout: true
+jobs:
+  - type: replacer
+    parameters:
+      deleteAllRules: true
+    rules:
+      - description: session-dvwa
+        matchType: req_header
+        matchString: Cookie
+        matchRegex: false
+        replacementString: 'PHPSESSID=A_REMPLACER; security=low'
+  - type: spider
+    parameters:
+      context: dvwa
+      maxDuration: 3
+  - type: passiveScan-wait
+    parameters:
+      maxDuration: 5
+  - type: activeScan
+    parameters:
+      context: dvwa
+      maxScanDurationInMins: 20
+  - type: report
+    parameters:
+      template: traditional-html
+      reportDir: '/home/kali/projet/web'
+      reportFile: zap_dvwa
+      reportTitle: 'ZAP - DVWA niveau low'

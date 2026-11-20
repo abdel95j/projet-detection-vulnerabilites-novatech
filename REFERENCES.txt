@@ -1,0 +1,8 @@
+Sujet du professeur : ressources/Sujet_projet.pdf (référence principale).
+Nmap : https://nmap.org/book/man-performance.html
+Greenbone : https://docs.greenbone.net/GSM-Manual/gos-24.10/en/scanning.html
+Nessus : https://docs.tenable.com/nessus/Content/AdvancedScanSettings.htm
+ZAP : https://www.zaproxy.org/docs/desktop/addons/passive-scanner/
+ZAP et risques des scans actifs : https://www.zaproxy.org/faq/is-there-any-danger-when-scanning-with-zap-against-a-live-website-e-g-create-delete-update-corrupt-data/
+VirtualBox, import/export : https://docs.oracle.com/en/virtualization/virtualbox/7.2/user/working-with-vms.html
+GitHub, fichiers volumineux : https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-large-files-on-github

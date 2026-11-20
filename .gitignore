@@ -1,0 +1,23 @@
+# Les VM et secrets restent hors du dépôt
+*.ova
+*.ovf
+*.vdi
+*.vmdk
+*.vhd
+*.vhdx
+*.nvram
+*.sav
+*.iso
+*.7z
+*.zip
+*.vbox*
+ACCES*
+acces*
+secrets/
+prive/
+.env*
+*.key
+*.pem
+plan_zap_session.yaml
+cookies*.txt
+.DS_Store

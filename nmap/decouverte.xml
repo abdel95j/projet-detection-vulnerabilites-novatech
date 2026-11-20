@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE nmaprun>
+<?xml-stylesheet href="file:///usr/share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 7.991 scan initiated Fri Nov 20 13:26:27 2026 as: /usr/lib/nmap/nmap -sn -oA nmap/decouverte 192.168.56.0/24 -->
+<nmaprun scanner="nmap" args="/usr/lib/nmap/nmap -sn -oA nmap/decouverte 192.168.56.0/24" start="1795199187" startstr="Fri Nov 20 13:26:27 2026" version="7.991" xmloutputversion="1.05">
+<verbose level="0"/>
+<debugging level="0"/>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="192.168.56.1" addrtype="ipv4"/>
+<address addr="0A:00:27:00:00:00" addrtype="mac"/>
+<hostnames>
+<hostname name="student-laptop.local" type="PTR"/>
+</hostnames>
+<times srtt="700" rttvar="5000" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="192.168.56.20" addrtype="ipv4"/>
+<address addr="08:00:27:EE:83:F2" addrtype="mac" vendor="Oracle VirtualBox virtual NIC"/>
+<hostnames>
+<hostname name="srv-web" type="PTR"/>
+</hostnames>
+<times srtt="1613" rttvar="3886" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="192.168.56.100" addrtype="ipv4"/>
+<address addr="08:00:27:6B:E9:91" addrtype="mac" vendor="Oracle VirtualBox virtual NIC"/>
+<hostnames>
+</hostnames>
+<times srtt="359" rttvar="5000" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="192.168.56.103" addrtype="ipv4"/>
+<address addr="08:00:27:F8:CB:A0" addrtype="mac" vendor="Oracle VirtualBox virtual NIC"/>
+<hostnames>
+<hostname name="srv-legacy" type="PTR"/>
+</hostnames>
+<times srtt="604" rttvar="2547" to="100000"/>
+</host>
+<host><status state="up" reason="localhost-response" reason_ttl="0"/>
+<address addr="192.168.56.101" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+</host>
+<runstats><finished time="1795199194" timestr="Fri Nov 20 13:26:34 2026" summary="Nmap done at Fri Nov 20 13:26:34 2026; 256 IP addresses (5 hosts up) scanned in 7.07 seconds" elapsed="7.07" exit="success"/><hosts up="5" down="251" total="256"/>
+</runstats>
+</nmaprun>
